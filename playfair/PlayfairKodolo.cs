@@ -11,17 +11,17 @@ namespace playfair
     {
         public char[,] KulcsTabla { get; set; } = new char[5, 5];
 
-        public string KodbolBetupar(string betupar)
+        public string KodbolBetupar(string bp)
         {
-            if (Index(betupar[0]).S == Index(betupar[1]).S) return 
-                    $"{KulcsTabla[Index(betupar[0]).S, Index(betupar[0]).O == 4 ? 0 : Index(betupar[0]).O + 1]}" +
-                    $"{KulcsTabla[Index(betupar[1]).S, Index(betupar[1]).O == 4 ? 0 : Index(betupar[1]).O + 1]}";
-            else if (Index(betupar[0]).O == Index(betupar[1]).O) return
-                    $"{KulcsTabla[Index(betupar[0]).S == 4 ? 0 : Index(betupar[0]).S + 1, Index(betupar[0]).O]}" +
-                    $"{KulcsTabla[Index(betupar[1]).S == 4 ? 0 : Index(betupar[1]).S + 1, Index(betupar[1]).O]}";
+            if (Index(bp[0]).S == Index(bp[1]).S) return 
+                    $"{KulcsTabla[Index(bp[0]).S, Index(bp[0]).O == 4 ? 0 : Index(bp[0]).O + 1]}" +
+                    $"{KulcsTabla[Index(bp[1]).S, Index(bp[1]).O == 4 ? 0 : Index(bp[1]).O + 1]}";
+            else if (Index(bp[0]).O == Index(bp[1]).O) return
+                    $"{KulcsTabla[Index(bp[0]).S == 4 ? 0 : Index(bp[0]).S + 1, Index(bp[0]).O]}" +
+                    $"{KulcsTabla[Index(bp[1]).S == 4 ? 0 : Index(bp[1]).S + 1, Index(bp[1]).O]}";
             else return
-                    $"{KulcsTabla[Index(betupar[0]).S, Index(betupar[1]).O]}" +
-                    $"{KulcsTabla[Index(betupar[1]).S, Index(betupar[0]).O]}";
+                    $"{KulcsTabla[Index(bp[0]).S, Index(bp[1]).O]}" +
+                    $"{KulcsTabla[Index(bp[1]).S, Index(bp[0]).O]}";
         }
 
 
@@ -50,15 +50,13 @@ namespace playfair
         public PlayfairKodolo(string fileNev)
         {
             using StreamReader sr = new($"..\\..\\..\\RES\\{fileNev}");
-            int sorIndex = 0;
+            int si = 0;
             while (!sr.EndOfStream)
             {
-                string fileSor = sr.ReadLine();
-                for (int oszlopIndex = 0; oszlopIndex < fileSor.Length; oszlopIndex++)
-                {
-                    KulcsTabla[sorIndex, oszlopIndex] = fileSor[oszlopIndex];
-                }
-                sorIndex++;
+                string sor = sr.ReadLine();
+                for (int oi = 0; oi < sor.Length; oi++)
+                    KulcsTabla[si, oi] = sor[oi];
+                si++;
             }
         }
     }
