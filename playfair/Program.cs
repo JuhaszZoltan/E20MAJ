@@ -10,7 +10,10 @@
             (int S, int O) betuIndex = pk.Index(betu);
             Console.WriteLine($"A karakter sorának indexe: {betuIndex.S}");
             Console.WriteLine($"A karakter oszlopának indexe: {betuIndex.O}");
-            Console.WriteLine(pk.KodbolBetupar("GR"));
+            Console.Write($"8. feladat: Kérek egy karakterpárt: ");
+            string karakterpar = Console.ReadLine();
+            Console.WriteLine($"Kódolva: {pk.KodbolBetupar(karakterpar)}");
+            
         }
     }
 }

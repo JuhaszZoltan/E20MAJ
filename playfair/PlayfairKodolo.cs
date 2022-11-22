@@ -24,21 +24,6 @@ namespace playfair
                     $"{KulcsTabla[Index(bp[1]).S, Index(bp[0]).O]}";
         }
 
-
-        public int SorIndex(char c)
-        {
-            for (int s = 0; s < KulcsTabla.GetLength(0); s++)
-                for (int o = 0; o < KulcsTabla.GetLength(1); o++)
-                    if (KulcsTabla[s, o] == c) return s;
-            return -1;
-        }
-        public int OszlopIndex(char c)
-        {
-            for (int s = 0; s < KulcsTabla.GetLength(0); s++)
-                for (int o = 0; o < KulcsTabla.GetLength(1); o++)
-                    if (KulcsTabla[s, o] == c) return o;
-            return -1;
-        }
         public (int S, int O) Index(char c)
         {
             for (int s = 0; s < KulcsTabla.GetLength(0); s++)
